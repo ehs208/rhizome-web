@@ -16,11 +16,11 @@ export const articleApi = {
 
   getArticle: async (id: string) => {
     const response = await axios.get<ArticleDetailResponse>(`${API_BASE_URL}/articles/${id}`);
-    return response.data;
+    return response.data.data;
   },
 
-  updateArticle: async (data: CreateArticleRequest & { id: number }) => {
-    const response = await axios.put(`${API_BASE_URL}/articles`, data);
+  updateArticle: async (id: number, data: CreateArticleRequest) => {
+    const response = await axios.put(`${API_BASE_URL}/articles/${id}`, data);
     return response.data;
   },
 };
